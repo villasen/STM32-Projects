@@ -11,3 +11,6 @@ Command-line arguments:  -os macosx -ws cocoa -arch x86_64 -keyring /Users/marti
 
 !ENTRY com.st.stm32cube.ide.mcu.ide 1 1 2022-10-09 11:49:02.365
 !MESSAGE Started RMI Server, listening on port 41337
+
+!ENTRY org.eclipse.cdt.core 1 0 2022-10-09 15:08:29.009
+!MESSAGE Indexed 'ST-411RE' (22 sources, 82 headers) in 4.3 sec: 4,741 declarations; 22,730 references; 0 unresolved inclusions; 1 syntax errors; 2 unresolved names (0.0073%)
