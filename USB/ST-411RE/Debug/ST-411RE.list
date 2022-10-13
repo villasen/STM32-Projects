@@ -27,23 +27,23 @@ Idx Name          Size      VMA       LMA       File off  Algn
                   ALLOC
  11 .ARM.attributes 00000030  00000000  00000000  0002000c  2**0
                   CONTENTS, READONLY
- 12 .debug_info   0001203c  00000000  00000000  0002003c  2**0
+ 12 .debug_info   00012051  00000000  00000000  0002003c  2**0
                   CONTENTS, READONLY, DEBUGGING, OCTETS
- 13 .debug_abbrev 00001ef3  00000000  00000000  00032078  2**0
+ 13 .debug_abbrev 00001ef5  00000000  00000000  0003208d  2**0
                   CONTENTS, READONLY, DEBUGGING, OCTETS
- 14 .debug_aranges 00001118  00000000  00000000  00033f70  2**3
+ 14 .debug_aranges 00001118  00000000  00000000  00033f88  2**3
                   CONTENTS, READONLY, DEBUGGING, OCTETS
- 15 .debug_ranges 00001078  00000000  00000000  00035088  2**3
+ 15 .debug_ranges 00001078  00000000  00000000  000350a0  2**3
                   CONTENTS, READONLY, DEBUGGING, OCTETS
- 16 .debug_macro  00017426  00000000  00000000  00036100  2**0
+ 16 .debug_macro  00017426  00000000  00000000  00036118  2**0
                   CONTENTS, READONLY, DEBUGGING, OCTETS
- 17 .debug_line   000138f7  00000000  00000000  0004d526  2**0
+ 17 .debug_line   000138f9  00000000  00000000  0004d53e  2**0
                   CONTENTS, READONLY, DEBUGGING, OCTETS
- 18 .debug_str    00099e5f  00000000  00000000  00060e1d  2**0
+ 18 .debug_str    00099e66  00000000  00000000  00060e37  2**0
                   CONTENTS, READONLY, DEBUGGING, OCTETS
- 19 .comment      00000050  00000000  00000000  000fac7c  2**0
+ 19 .comment      00000050  00000000  00000000  000fac9d  2**0
                   CONTENTS, READONLY
- 20 .debug_frame  00004a3c  00000000  00000000  000faccc  2**2
+ 20 .debug_frame  00004a40  00000000  00000000  000facf0  2**2
                   CONTENTS, READONLY, DEBUGGING, OCTETS
 
 Disassembly of section .text:
@@ -358,52 +358,52 @@ Disassembly of section .text:
 int main(void)
 {
  80004dc:	b580      	push	{r7, lr}
- 80004de:	af00      	add	r7, sp, #0
+ 80004de:	b092      	sub	sp, #72	; 0x48
+ 80004e0:	af00      	add	r7, sp, #0
   /* USER CODE END 1 */
 
   /* MCU Configuration--------------------------------------------------------*/
 
   /* Reset of all peripherals, Initializes the Flash interface and the Systick. */
   HAL_Init();
- 80004e0:	f000 fdc4 	bl	800106c <HAL_Init>
+ 80004e2:	f000 fdc3 	bl	800106c <HAL_Init>
   /* USER CODE BEGIN Init */
 
   /* USER CODE END Init */
 
   /* Configure the system clock */
   SystemClock_Config();
- 80004e4:	f000 f814 	bl	8000510 <SystemClock_Config>
+ 80004e6:	f000 f813 	bl	8000510 <SystemClock_Config>
   /* USER CODE BEGIN SysInit */
 
   /* USER CODE END SysInit */
 
   /* Initialize all configured peripherals */
   MX_GPIO_Init();
- 80004e8:	f000 faa2 	bl	8000a30 <MX_GPIO_Init>
+ 80004ea:	f000 faa1 	bl	8000a30 <MX_GPIO_Init>
   MX_USART2_UART_Init();
- 80004ec:	f000 fa76 	bl	80009dc <MX_USART2_UART_Init>
+ 80004ee:	f000 fa75 	bl	80009dc <MX_USART2_UART_Init>
   MX_ADC1_Init();
- 80004f0:	f000 f878 	bl	80005e4 <MX_ADC1_Init>
+ 80004f2:	f000 f877 	bl	80005e4 <MX_ADC1_Init>
   MX_I2C1_Init();
- 80004f4:	f000 f8c8 	bl	8000688 <MX_I2C1_Init>
+ 80004f6:	f000 f8c7 	bl	8000688 <MX_I2C1_Init>
   MX_SPI2_Init();
- 80004f8:	f000 f8f4 	bl	80006e4 <MX_SPI2_Init>
+ 80004fa:	f000 f8f3 	bl	80006e4 <MX_SPI2_Init>
   MX_TIM2_Init();
- 80004fc:	f000 f928 	bl	8000750 <MX_TIM2_Init>
+ 80004fe:	f000 f927 	bl	8000750 <MX_TIM2_Init>
   MX_TIM10_Init();
- 8000500:	f000 f9ac 	bl	800085c <MX_TIM10_Init>
+ 8000502:	f000 f9ab 	bl	800085c <MX_TIM10_Init>
   MX_TIM11_Init();
- 8000504:	f000 f9f2 	bl	80008ec <MX_TIM11_Init>
+ 8000506:	f000 f9f1 	bl	80008ec <MX_TIM11_Init>
   MX_USART1_UART_Init();
- 8000508:	f000 fa3e 	bl	8000988 <MX_USART1_UART_Init>
+ 800050a:	f000 fa3d 	bl	8000988 <MX_USART1_UART_Init>
 
-  /* USER CODE END 2 */
+  UART_HandleTypeDef p_uart;
 
-  /* Infinite loop */
-  /* USER CODE BEGIN WHILE */
+
+
   while (1)
- 800050c:	e7fe      	b.n	800050c <main+0x30>
-	...
+ 800050e:	e7fe      	b.n	800050e <main+0x32>
 
 08000510 <SystemClock_Config>:
 /**
