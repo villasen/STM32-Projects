@@ -118,9 +118,24 @@ int main(void)
 
   /* Infinite loop */
   /* USER CODE BEGIN WHILE */
+
+
+
+  UART_HandleTypeDef p_uart;
+
+
+
   while (1)
   {
     /* USER CODE END WHILE */
+
+
+
+
+
+
+
+
 
     /* USER CODE BEGIN 3 */
   }
