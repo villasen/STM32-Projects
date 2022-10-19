@@ -1,18 +1,21 @@
-14:44:12 **** Incremental Build of configuration Debug for project ST-411RE ****
+21:38:44 **** Incremental Build of configuration Debug for project Startup-Project-411 ****
 make -j7 all 
-arm-none-eabi-gcc "../Core/Src/main.c" -mcpu=cortex-m4 -std=gnu11 -g3 -DDEBUG -DUSE_HAL_DRIVER -DSTM32F411xE -c -I../Core/Inc -I../Drivers/STM32F4xx_HAL_Driver/Inc -I../Drivers/STM32F4xx_HAL_Driver/Inc/Legacy -I../Drivers/CMSIS/Device/ST/STM32F4xx/Include -I../Drivers/CMSIS/Include -O0 -ffunction-sections -fdata-sections -Wall -fstack-usage -MMD -MP -MF"Core/Src/main.d" -MT"Core/Src/main.o" --specs=nano.specs -mfpu=fpv4-sp-d16 -mfloat-abi=hard -mthumb -o "Core/Src/main.o"
-../Core/Src/main.c: In function 'main':
-../Core/Src/main.c:124:22: warning: unused variable 'p_uart' [-Wunused-variable]
-  124 |   UART_HandleTypeDef p_uart;
-      |                      ^~~~~~
-arm-none-eabi-gcc -o "ST-411RE.elf" @"objects.list"   -mcpu=cortex-m4 -T"/Users/martin/STM32CubeIDE/STM32-Projects/USB/ST-411RE/STM32F411RETX_FLASH.ld" --specs=nosys.specs -Wl,-Map="ST-411RE.map" -Wl,--gc-sections -static --specs=nano.specs -mfpu=fpv4-sp-d16 -mfloat-abi=hard -mthumb -Wl,--start-group -lc -lm -Wl,--end-group
-Finished building target: ST-411RE.elf
+arm-none-eabi-gcc "../Src/syscalls.c" -mcpu=cortex-m4 -std=gnu11 -g3 -DDEBUG -DNUCLEO_F411RE -DSTM32 -DSTM32F4 -DSTM32F411RETx -c -I../Inc -O0 -ffunction-sections -fdata-sections -Wall -fstack-usage -MMD -MP -MF"Src/syscalls.d" -MT"Src/syscalls.o" --specs=nano.specs -mfloat-abi=soft -mthumb -o "Src/syscalls.o"
+arm-none-eabi-gcc -o "Startup-Project-411.elf" @"objects.list"   -mcpu=cortex-m4 -T"/Users/martin/STM32CubeIDE/STM32-Projects/USB/Startup-Project-411/STM32F411RETX_FLASH.ld" --specs=nosys.specs -Wl,-Map="Startup-Project-411.map" -Wl,--gc-sections -static --specs=nano.specs -mfloat-abi=soft -mthumb -Wl,--start-group -lc -lm -Wl,--end-group
+Finished building target: Startup-Project-411.elf
  
-arm-none-eabi-size   ST-411RE.elf 
-arm-none-eabi-objdump -h -S  ST-411RE.elf  > "ST-411RE.list"
+arm-none-eabi-size   Startup-Project-411.elf 
+arm-none-eabi-objdump -h -S  Startup-Project-411.elf  > "Startup-Project-411.list"
    text	   data	    bss	    dec	    hex	filename
-  15988	     20	   2164	  18172	   46fc	ST-411RE.elf
+   3764	    108	   1588	   5460	   1554	Startup-Project-411.elf
 Finished building: default.size.stdout
  
-Finished building: ST-411RE.list
+Finished building: Startup-Project-411.list
+ 
+21:39:58 **** Incremental Build of configuration Debug for project Startup-Project-411 ****
+make -j7 all 
+arm-none-eabi-size   Startup-Project-411.elf 
+   text	   data	    bss	    dec	    hex	filename
+   3764	    108	   1588	   5460	   1554	Startup-Project-411.elf
+Finished building: default.size.stdout
  

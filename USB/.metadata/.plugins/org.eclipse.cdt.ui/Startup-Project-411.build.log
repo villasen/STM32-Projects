@@ -1,0 +1,10 @@
+21:39:58 **** Incremental Build of configuration Debug for project Startup-Project-411 ****
+make -j7 all 
+arm-none-eabi-size   Startup-Project-411.elf 
+   text	   data	    bss	    dec	    hex	filename
+   3764	    108	   1588	   5460	   1554	Startup-Project-411.elf
+Finished building: default.size.stdout
+ 
+
+21:39:58 Build Finished. 0 errors, 0 warnings. (took 429ms)
+

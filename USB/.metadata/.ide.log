@@ -1580,3 +1580,4 @@
 2022-10-18 20:37:17,174 [INFO] ApiDb:447 - User favorites MCUs=[]
 2022-10-18 20:37:17,201 [INFO] ApiDb:443 - Save user favorites file /Users/martin/.stm32cubeide/favorites.boards.txt: 0 item(s)
 2022-10-18 20:37:17,202 [INFO] ApiDb:447 - User favorites Boards=[]
+2022-10-18 21:50:29,042 [INFO] LogOutputStream:76 - [STDOUT_REDIRECT] StartTraceHandler.execute(), success : Collect=true
