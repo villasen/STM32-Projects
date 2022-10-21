@@ -1,0 +1,22 @@
+/*
+ * stm32f411xx.h
+ *
+ *  Created on: Oct 21, 2022
+ *      Author: MARTIN VILLASENOR
+ */
+
+#ifndef INC_STM32F411XX_H_
+#define INC_STM32F411XX_H_
+
+
+#define FLASH_BASEADDR  0X08000000U     //Base address for flash area
+#define SRAM_BASEADDR   0X20000000U    //Base address for SRAM1 are.
+#define SRAM            SRAM_BASEADDR   // SRAM alias
+#define SYSTEM_ADDR     0X1FFF0000U    // Base address for System area or ROM area.
+#define ROM_BASEADDR    SYSTEM_ADDR    // ROM alias
+
+
+
+
+
+#endif /* INC_STM32F411XX_H_ */

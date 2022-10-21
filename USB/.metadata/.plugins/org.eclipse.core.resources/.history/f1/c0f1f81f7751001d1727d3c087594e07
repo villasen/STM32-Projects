@@ -1,0 +1,22 @@
+/*
+ * stm32f411xx.h
+ *
+ *  Created on: Oct 21, 2022
+ *      Author: martin
+ */
+
+#ifndef INC_STM32F411XX_H_
+#define INC_STM32F411XX_H_
+
+
+#define FLASH_BASEADDR  0X08000000U
+#define SRAM_BASEADDR   0X20000000U
+#define SRAM            SRAM_BASEADDR
+#define SYSTEM_ADDR     0X1FFF0000U
+#define ROM             SYSTEM_ADDR
+
+
+
+
+
+#endif /* INC_STM32F411XX_H_ */
