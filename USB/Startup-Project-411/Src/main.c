@@ -21,6 +21,7 @@
 #include <stdlib.h>
 #include <string.h>
 
+#include "stm32f411xx.h"
 
 
 #if !defined(__SOFT_FP__) && defined(__ARM_FP)

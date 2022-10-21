@@ -602,24 +602,24 @@ LOAD /Applications/STM32CubeIDE.app/Contents/Eclipse/plugins/com.st.stm32cube.id
  .debug_ranges  0x0000000000000000       0x10 ./Src/main.o
  .debug_ranges  0x0000000000000010       0x20 ./Startup/startup_stm32f746nghx.o
 
-.debug_macro    0x0000000000000000      0xf34
- .debug_macro   0x0000000000000000       0x63 ./Src/main.o
- .debug_macro   0x0000000000000063      0xa84 ./Src/main.o
- .debug_macro   0x0000000000000ae7       0x22 ./Src/main.o
- .debug_macro   0x0000000000000b09       0x8e ./Src/main.o
- .debug_macro   0x0000000000000b97       0x51 ./Src/main.o
- .debug_macro   0x0000000000000be8      0x103 ./Src/main.o
- .debug_macro   0x0000000000000ceb       0x6a ./Src/main.o
- .debug_macro   0x0000000000000d55      0x1df ./Src/main.o
+.debug_macro    0x0000000000000000      0xf3e
+ .debug_macro   0x0000000000000000       0x6d ./Src/main.o
+ .debug_macro   0x000000000000006d      0xa84 ./Src/main.o
+ .debug_macro   0x0000000000000af1       0x22 ./Src/main.o
+ .debug_macro   0x0000000000000b13       0x8e ./Src/main.o
+ .debug_macro   0x0000000000000ba1       0x51 ./Src/main.o
+ .debug_macro   0x0000000000000bf2      0x103 ./Src/main.o
+ .debug_macro   0x0000000000000cf5       0x6a ./Src/main.o
+ .debug_macro   0x0000000000000d5f      0x1df ./Src/main.o
 
-.debug_line     0x0000000000000000      0x42a
- .debug_line    0x0000000000000000      0x3a6 ./Src/main.o
- .debug_line    0x00000000000003a6       0x84 ./Startup/startup_stm32f746nghx.o
+.debug_line     0x0000000000000000      0x489
+ .debug_line    0x0000000000000000      0x405 ./Src/main.o
+ .debug_line    0x0000000000000405       0x84 ./Startup/startup_stm32f746nghx.o
 
-.debug_str      0x0000000000000000     0x3ae9
- .debug_str     0x0000000000000000     0x3ab8 ./Src/main.o
-                                       0x3c13 (size before relaxing)
- .debug_str     0x0000000000003ab8       0x31 ./Startup/startup_stm32f746nghx.o
+.debug_str      0x0000000000000000     0x3afd
+ .debug_str     0x0000000000000000     0x3acc ./Src/main.o
+                                       0x3c27 (size before relaxing)
+ .debug_str     0x0000000000003acc       0x31 ./Startup/startup_stm32f746nghx.o
                                          0x79 (size before relaxing)
 
 .comment        0x0000000000000000       0x50
