@@ -17,6 +17,7 @@
  */
 
 #include <stdint.h>
+#include <stdio.h>
 #include "stm32f407xx.h"
 
 
@@ -27,6 +28,16 @@
 
 int main(void)
 {
+
+	printf("testing STM32F407\n");
+
+	printf("next line is \n");
+
+	printf("and continue \n");
+
+
     /* Loop forever */
 	for(;;);
+
+	return 0;
 }

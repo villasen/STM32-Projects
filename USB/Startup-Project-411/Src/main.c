@@ -124,6 +124,9 @@ int main()
 
     unsigned int len = sizeof(numbers)/sizeof(int);
 
+
+    printf("test STM32F411\n");
+
     array_fill_numbers(numbers,len);
 
     display_numbers(numbers,len,"B-unsorted array :");

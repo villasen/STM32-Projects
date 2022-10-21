@@ -26,7 +26,7 @@
 #define AHB2PERIPH_BASEADDR 0X50000000U  /* Base address for AHB2 bus domain */
 
 
-/* Base addresses for AHB1 Peripherals */
+/* Base addresses for PHB1 Peripherals */
 
 #define GPIOA_BASEADDR      (AHB1PERIPH_BASEADDR + 0X0000)
 #define GPIOB_BASEADDR      (AHB1PERIPH_BASEADDR + 0X0400)
