@@ -36,3 +36,9 @@ Command-line arguments:  -os macosx -ws cocoa -arch x86_64 -keyring /Users/marti
 
 !ENTRY com.st.stm32cube.ide.mcu.debug.swv 1 1 2022-10-18 21:40:01.810
 !MESSAGE SWV configuration; base: 36000000; minDiv: 18; maxDiv: 65535; maxSWO: 2000000; limit: 2000000 => SWO: 2000000; CPU: 16000000; div: 8
+
+!ENTRY com.st.stm32cube.ide.mcu.debug.swv 1 1 2022-10-18 22:06:37.547
+!MESSAGE SWV configuration; base: 36000000; minDiv: 18; maxDiv: 65535; maxSWO: 2000000; limit: 2000000 => SWO: 2000000; CPU: 16000000; div: 8
+
+!ENTRY org.eclipse.cdt.core 1 0 2022-10-20 20:03:47.006
+!MESSAGE Indexed 'Startup-Project-746' (3 sources, 53 headers) in 2.27 sec: 1,949 declarations; 2,811 references; 0 unresolved inclusions; 2 syntax errors; 2 unresolved names (0.042%)
