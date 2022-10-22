@@ -47,12 +47,11 @@ typedef struct
 ************************************************************************************/
 
 
-/* Init and DeInit GPIO  */
-void GPIO_Init(GPIO_Handle_t *pGPIOHandle);
-void GPIO_DeInit(GPIO_RegDef_t *pGPIOx);
+void GPIO_Init(void);
+void GPIO_DeInit(void);
+void GPIO_PeriClockControl(void);
 
-/* Peripheral Clock setup  */
-void GPIO_PeriClockControl(GPIO_RegDef_t *pGPIOx, uint8_t EnorDi);
+
 
 
 /* data read and write GPIOs  */
@@ -63,9 +62,6 @@ void     GPIO_WriteFromOutputPort(GPIO_RegDef_t *pGPIOx, uint16_t value);
 void     GPIO_ToggleOutputPin(GPIO_RegDef_t *pGPIOx, uint8_t PinNumber);
 
 
-/* IRQ configuration and ISR handling  */
-void GPIO_IRQConfig(uint8_t IRQNumber, uint8_t IRQPriority, uint8_t EnorDis);
-void GPIO_IRQHandling(uint8_t PinNumber);
 
 
 
