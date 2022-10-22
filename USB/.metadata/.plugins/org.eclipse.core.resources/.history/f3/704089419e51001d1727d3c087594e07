@@ -1,0 +1,82 @@
+/*
+ * stm32f407xx.h
+ *
+ *  Created on: Oct 21, 2022
+ *      Author: martin
+ */
+
+#ifndef INC_STM32F407XX_H_
+#define INC_STM32F407XX_H_
+
+/* Base address for flash and SRAM */
+
+#define FLASH_BASEADDR      0X08000000U     /*Base address for flash area*/
+#define SRAM_BASEADDR       0X20000000U    /*Base address for SRAM1 are.*/
+#define SRAM                SRAM_BASEADDR   /* RAM alias */
+#define SYSTEM_ADDR         0X1FFF0000U    /* Base address for System area or ROM area. */
+#define ROM_BASEADDR        SYSTEM_ADDR    /* ROM alias */
+
+
+/* Base addresses for the Bus domains */
+
+#define PERIPH_BASEADDR     0X40000000U   /* Base address for Peripheral area */
+#define APB1PERIPH_BASEADDR PERIPH_BASE   /* Base address APB1 bus domain */
+#define APB2PERIPH_BASEADDR 0X40010000U  /* Base address for APB2 bus domain */
+#define AHB1PERIPH_BASEADDR 0X40020000U  /* Base address for AHB1 bus domain */
+#define AHB2PERIPH_BASEADDR 0X50000000U  /* Base address for AHB2 bus domain */
+
+
+/* Base addresses for AHB1 Peripherals */
+
+#define GPIOA_BASEADDR      (AHB1PERIPH_BASEADDR + 0X0000)
+#define GPIOB_BASEADDR      (AHB1PERIPH_BASEADDR + 0X0400)
+#define GPIOC_BASEADDR      (AHB1PERIPH_BASEADDR + 0X0800)
+#define GPIOD_BASEADDR      (AHB1PERIPH_BASEADDR + 0X0C00)
+#define GPIOE_BASEADDR      (AHB1PERIPH_BASEADDR + 0X1000)
+#define GPIOF_BASEADDR      (AHB1PERIPH_BASEADDR + 0X1400)
+#define GPIOG_BASEADDR      (AHB1PERIPH_BASEADDR + 0X1800)
+#define GPIOH_BASEADDR      (AHB1PERIPH_BASEADDR + 0X1C00)
+#define GPIOI_BASEADDR      (AHB1PERIPH_BASEADDR + 0X2000)
+#define GPIOJ_BASEADDR      (AHB1PERIPH_BASEADDR + 0X2400)
+#define GPIOK_BASEADDR      (AHB1PERIPH_BASEADDR + 0X2800)
+
+
+/* Base addresses for APB1 Peripherals */
+
+#define I2C1_BASEADDR       (APB1PERIPH_BASEADDR + 0x5400)
+#define I2C2_BASEADDR       (APB1PERIPH_BASEADDR + 0x5800)
+#define I2C3_BASEADDR       (APB1PERIPH_BASEADDR + 0x5C00)
+#define SPI2_BASEADDR       (APB1PERIPH_BASEADDR + 0x3800)
+#define SPI3_BASEADDR       (APB1PERIPH_BASEADDR + 0x3C00)
+#define USART2_BASEADDR     (APB1PERIPH_BASEADDR + 0x4400)
+#define USART3_BASEADDR     (APB1PERIPH_BASEADDR + 0x4800)
+#define UART4_BASEADDR      (APB1PERIPH_BASEADDR + 0x4C00)
+#define UART5_BASEADDR      (APB1PERIPH_BASEADDR + 0x5000)
+
+/* Base addresses for APB2 Peripherals */
+
+#define SPI1_BASEADDR       (APB2PERIPH_BASEADDR + 0x3000)
+#define SPI4_BASEADDR       (APB2PERIPH_BASEADDR + 0x3400)
+#define USART1_BASEADDR     (APB2PERIPH_BASEADDR + 0x1000)
+#define USART6_BASEADDR     (APB2PERIPH_BASEADDR + 0x1400)
+#define EXTI_BASEADDR       (APB2PERIPH_BASEADDR + 0x3C00)
+#define SYSCGG_BASEADDR     (APB2PERIPH_BASEADDR + 0x3800)
+
+
+/* peripheral register definition structure for GPIO */
+
+typedef struct
+{
+	uint32_t  MODER;
+
+
+
+
+} GPIO_RegDef_t;
+};
+
+
+
+
+
+#endif /* INC_STM32F407XX_H_ */

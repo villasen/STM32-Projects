@@ -102,7 +102,7 @@ typedef struct
 	volatile uint32_t  RCC_AHB2ENR;      /* 0X34 */
 	volatile uint32_t  RCC_AHB3ENR;     /* 0X38 */
 	         uint32_t  Reserved3;       /* 0X3c */
-	volatile uint32_t  RCC_APB1ENR;     /* 0X40 */
+	volatile uint32_t  RCC_APB1ENR     /* 0X40 */
 	volatile uint32_t  RCC_APB2ENR;      /* 0X44 */
              uint32_t  Reserved4;     /* 0X48 */
              uint32_t  Reserved5;    /* 0X4C */

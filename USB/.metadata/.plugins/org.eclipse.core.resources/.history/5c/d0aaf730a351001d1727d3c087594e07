@@ -8,8 +8,6 @@
 #ifndef INC_STM32F407XX_H_
 #define INC_STM32F407XX_H_
 
-#include  <stdint.h>
-
 /* Base address for flash and SRAM */
 
 #define FLASH_BASEADDR      0X08000000U     /*Base address for flash area*/
@@ -65,8 +63,6 @@
 #define SYSCGG_BASEADDR     (APB2PERIPH_BASEADDR + 0x3800)
 
 
-
-
 /* peripheral register definition structure for GPIO */
 
 typedef struct
@@ -84,56 +80,8 @@ typedef struct
 } GPIO_RegDef_t;
 
 
-typedef struct
-{
-	volatile uint32_t  RCC_CR;      /* GPIO port mode register. Address offset: 0x00 */
-	volatile uint32_t  RCC_PLLCFGR;     /* GPIO port output type register.  Address offset: 0x04*/
-	volatile uint32_t  RCC_CFGR;   /* GPIO port output speed register. Address offset: 0x08 */
-	volatile uint32_t  RCC_CIR;         /*   0X0C */
-	volatile uint32_t  RCC_AHB1RSTR;     /* GPIO port pull-up/pull-down register. Address offset: 0x10 */
-	volatile uint32_t  RCC_AHB2RSTR;       /* GPIO port input data register. Address offset: 0x14 */
-	volatile uint32_t  RCC_AHB3RSTR;      /* GPIO port output data register . Address offset: 0x18 */
-	         uint32_t  Reserved0;     /* GPIO port bit set/reset register. Address offset: 0x1C */
-	volatile uint32_t  RCC_APB1RSTR;     /* GPIO port configuration lock register. Address offset: 0x20 */
-	volatile uint32_t  RCC_APB2RSTR;  /* GPIO alternate function low register . Address offset: 0x24 */
-	         uint32_t  Reserved1;     /* 0X28 */
-	         uint32_t  Reserved2;    /* 0X2C */
-	volatile uint32_t  RCC_AHB1ENR;     /* 0X30 */
-	volatile uint32_t  RCC_AHB2ENR;      /* 0X34 */
-	volatile uint32_t  RCC_AHB3ENR;     /* 0X38 */
-	         uint32_t  Reserved3;       /* 0X3c */
-	volatile uint32_t  RCC_APB1ENR;     /* 0X40 */
-	volatile uint32_t  RCC_APB2ENR;      /* 0X44 */
-             uint32_t  Reserved4;     /* 0X48 */
-             uint32_t  Reserved5;    /* 0X4C */
-	volatile uint32_t  RCC_AHB1LPENR;     /* 0X50 */
-	volatile uint32_t  RCC_AHB2LPENR;	  /*0x54 */
-	volatile uint32_t  RCC_AHB3LPENR;     /* 0X58 */
-             uint32_t  Reserved6;       /* 0X5C */
-    volatile uint32_t  RCC_APB1LPENR;     /* 0X60 */
-    volatile uint32_t  RCC_APB2LPENR;	  /*0x64 */
-             uint32_t  Reserved7;       /* 0X68 */
-             uint32_t  Reserved8;       /* 0X6C */
-    volatile uint32_t  RRCC_BDCR;     /* 0X70 */
-    volatile uint32_t  RCC_CSR;     /* 0X74 */
-             uint32_t  Reserved9;       /* 0X78 */
-             uint32_t  Reserved10;       /* 0X7C */
-    volatile uint32_t  RCC_SSCGR;     /* 0X80 */
-    volatile uint32_t  RCC_PLLI2SCFGR;     /* 0X84 */
 
-} RCC_RegDef_t;
 
-#define GPIOA    ((GPIO_RegDef_t*)GPIOA_BASEADDR)
-#define GPIOB    ((GPIO_RegDef_t*)GPIOB_BASEADDR)
-#define GPIOC    ((GPIO_RegDef_t*)GPIOC_BASEADDR)
-#define GPIOD    ((GPIO_RegDef_t*)GPIOD_BASEADDR)
-#define GPIOE    ((GPIO_RegDef_t*)GPIOE_BASEADDR)
-#define GPIOF    ((GPIO_RegDef_t*)GPIOF_BASEADDR)
-#define GPIOG    ((GPIO_RegDef_t*)GPIOG_BASEADDR)
-#define GPIOH    ((GPIO_RegDef_t*)GPIOH_BASEADDR)
-#define GPIOI    ((GPIO_RegDef_t*)GPIOI_BASEADDR)
-#define GPIOJ    ((GPIO_RegDef_t*)GPIOJ_BASEADDR)
-#define GPIOK    ((GPIO_RegDef_t*)GPIOK_BASEADDR)
 
 
 #endif /* INC_STM32F407XX_H_ */
