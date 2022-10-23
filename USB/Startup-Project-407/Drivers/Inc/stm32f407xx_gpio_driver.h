@@ -39,6 +39,37 @@ typedef struct
 }GPIO_Handle_t;
 
 
+/* GPIO pin possible modes   */
+#define GPIO_MODE_IN       0
+#define GPIO_MODE_OUT      1
+#define GPIO_MODE_ALTFN    2
+#define GPIO_MODE_ANALOG   3
+#define GPIO_MODE_IT_FT    4
+#define GPIO_MODE_IT_RT    5
+#define GPIO_MODE_IT_RFT   6
+
+
+/* GPIO pin possible output types   */
+#define GPIO_OP_TYPE_PP    0
+#define GPIO_OP_TYPE_OD    1
+
+/* GPIO pin possible output speeds   */
+#define GPIO_SPEDD_LOW     0
+#define GPIO_SPEDD_MEDIUM  1
+#define GPIO_SPEDD_FAST    2
+#define GPIO_SPEDD_HIGH    3
+
+/* GPIO pin pull up and pull down configuration macros   */
+#define GPIO_NO_PUPD       0
+#define GPIO_PIN_PU        1
+#define GPIO_PIN_PD        2
+
+
+
+
+
+
+
 
 /************************************************************************************
 *
@@ -46,13 +77,12 @@ typedef struct
 *           For more information about these APIs  check the Function Definitions
 ************************************************************************************/
 
+/* Peripheral Clock setup  */
+void GPIO_PeriClockControl(GPIO_RegDef_t *pGPIOx, uint8_t EnorDi);
 
 /* Init and DeInit GPIO  */
 void GPIO_Init(GPIO_Handle_t *pGPIOHandle);
 void GPIO_DeInit(GPIO_RegDef_t *pGPIOx);
-
-/* Peripheral Clock setup  */
-void GPIO_PeriClockControl(GPIO_RegDef_t *pGPIOx, uint8_t EnorDi);
 
 
 /* data read and write GPIOs  */
