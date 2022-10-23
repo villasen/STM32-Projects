@@ -133,7 +133,8 @@ void GPIO_Init(GPIO_Handle_t *pGPIOHandle){
 	{
 		// non-interrupts
 		temp = (pGPIOHandle->GPIOPinConfig.GPIO_PinMode << (2 * pGPIOHandle->GPIOPinConfig.GPIO_PinNumber));
-        pGPIOHandle->pGPIOx->MODER |= temp;
+		pGPIOHandle->pGPIOx->MODER &= ~(0x3 << pGPIOHandle->GPIOPinConfig.GPIO_PinNumber); //clears
+        pGPIOHandle->pGPIOx->MODER |= temp; //sets
 
 	}
 	else   //interrupt modes
@@ -149,21 +150,24 @@ void GPIO_Init(GPIO_Handle_t *pGPIOHandle){
 /* 2. Configure the speed
 */
 	temp = (pGPIOHandle->GPIOPinConfig.GPIO_PinSpeed << (2 * pGPIOHandle->GPIOPinConfig.GPIO_PinNumber));
-	pGPIOHandle->pGPIOx->OSPEEDR |= temp;
+	pGPIOHandle->pGPIOx->OSPEEDR &= ~(0x3 << pGPIOHandle->GPIOPinConfig.GPIO_PinNumber); //clears
+	pGPIOHandle->pGPIOx->OSPEEDR |= temp; //sets
 
 	temp = 0;
 
 /* 3. Configure the pullup pulldown (pupd) settings
 */
 	temp = (pGPIOHandle->GPIOPinConfig.GPIO_PinPuPdControl << (2 * pGPIOHandle->GPIOPinConfig.GPIO_PinNumber));
-	pGPIOHandle->pGPIOx->PUPDR |= temp;
+	pGPIOHandle->pGPIOx->PUPDR &= ~(0x3 << pGPIOHandle->GPIOPinConfig.GPIO_PinNumber); //clears
+	pGPIOHandle->pGPIOx->PUPDR |= temp; //sets
 
 	temp = 0;
 
 /*  4. Configure the output type
  * */
 	temp = (pGPIOHandle->GPIOPinConfig.GPIO_PinOPType << (pGPIOHandle->GPIOPinConfig.GPIO_PinNumber));
-	pGPIOHandle->pGPIOx->OTYPER |= temp;
+	pGPIOHandle->pGPIOx->OTYPER &= ~(0x1 << pGPIOHandle->GPIOPinConfig.GPIO_PinNumber); //clears
+	pGPIOHandle->pGPIOx->OTYPER |= temp; //sets
 
 	temp = 0;
 
@@ -177,7 +181,8 @@ void GPIO_Init(GPIO_Handle_t *pGPIOHandle){
 		temp1 = pGPIOHandle->GPIOPinConfig.GPIO_PinNumber / 8; //Gets the Low or High AFR
 		temp2 = pGPIOHandle->GPIOPinConfig.GPIO_PinNumber % 8; //Gets the pin position
 
-		pGPIOHandle->pGPIOx->AFR[temp1] |= pGPIOHandle->GPIOPinConfig.GPIO_PinAltFunMode << (4 * temp2);
+		pGPIOHandle->pGPIOx->AFR[temp1] &= ~(0xF <<(4* temp2)); //clears
+		pGPIOHandle->pGPIOx->AFR[temp1] |= pGPIOHandle->GPIOPinConfig.GPIO_PinAltFunMode << (4 * temp2); //sets
 
 	}
 
@@ -202,6 +207,42 @@ void GPIO_Init(GPIO_Handle_t *pGPIOHandle){
  ********************************************************************************/
 void GPIO_DeInit(GPIO_RegDef_t *pGPIOx){
 
+    if(pGPIOx == GPIOA)
+    {
+		GPIOA_REG_RESET();
+    }
+	else if(pGPIOx == GPIOB)
+	{
+		GPIOB_REG_RESET();
+	}
+	else if(pGPIOx == GPIOC)
+	{
+		GPIOC_REG_RESET();
+	}
+	else if(pGPIOx == GPIOD)
+	{
+		GPIOD_REG_RESET();
+	}
+	else if(pGPIOx == GPIOE)
+	{
+		GPIOE_REG_RESET();
+	}
+	else if(pGPIOx == GPIOF)
+	{
+		GPIOF_REG_RESET();
+	}
+	else if(pGPIOx == GPIOG)
+	{
+		GPIOG_REG_RESET();
+	}
+	else if(pGPIOx == GPIOH)
+	{
+		GPIOH_REG_RESET();
+	}
+	else if(pGPIOx == GPIOI)
+	{
+		GPIOI_REG_RESET();
+	}
 
 
 }
