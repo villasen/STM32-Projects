@@ -127,17 +127,59 @@ void GPIO_Init(GPIO_Handle_t *pGPIOHandle){
 
 /* 1. Configure the mode of the GPIO pin
  */
+	uint32_t temp = 0;  //temp register
+
+	if(pGPIOHandle->GPIOPinConfig.GPIO_PinMode < GPIO_MODE_ANALOG)
+	{
+		// non-interrupts
+		temp = (pGPIOHandle->GPIOPinConfig.GPIO_PinMode << (2 * pGPIOHandle->GPIOPinConfig.GPIO_PinNumber));
+        pGPIOHandle->pGPIOx->MODER |= temp;
+
+	}
+	else   //interrupt modes
+	{
+
+
+
+
+	}
+
+	temp = 0;
 
 /* 2. Configure the speed
 */
+	temp = (pGPIOHandle->GPIOPinConfig.GPIO_PinSpeed << (2 * pGPIOHandle->GPIOPinConfig.GPIO_PinNumber));
+	pGPIOHandle->pGPIOx->OSPEEDR |= temp;
+
+	temp = 0;
 
 /* 3. Configure the pullup pulldown (pupd) settings
+*/
+	temp = (pGPIOHandle->GPIOPinConfig.GPIO_PinPuPdControl << (2 * pGPIOHandle->GPIOPinConfig.GPIO_PinNumber));
+	pGPIOHandle->pGPIOx->PUPDR |= temp;
 
-/* 4. Configure the output type (optype)
- */
+	temp = 0;
 
-/* Configure the atl functionality
+/*  4. Configure the output type
+ * */
+	temp = (pGPIOHandle->GPIOPinConfig.GPIO_PinOPType << (pGPIOHandle->GPIOPinConfig.GPIO_PinNumber));
+	pGPIOHandle->pGPIOx->OTYPER |= temp;
+
+	temp = 0;
+
+
+/* Configure the alt functionality
  */
+	if(pGPIOHandle->GPIOPinConfig.GPIO_PinAltFunMode == GPIO_MODE_ALTFN)
+	{
+
+		uint8_t temp1, temp2;
+		temp1 = pGPIOHandle->GPIOPinConfig.GPIO_PinNumber / 8; //Gets the Low or High AFR
+		temp2 = pGPIOHandle->GPIOPinConfig.GPIO_PinNumber % 8; //Gets the pin position
+
+		pGPIOHandle->pGPIOx->AFR[temp1] |= pGPIOHandle->GPIOPinConfig.GPIO_PinAltFunMode << (4 * temp2);
+
+	}
 
 
 }
