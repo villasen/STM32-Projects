@@ -10,6 +10,8 @@
 
 #include  <stdint.h>
 
+#define _vo                 volatile
+
 /* Base address for flash and SRAM */
 
 #define FLASH_BASEADDR      0X08000000U     /*Base address for flash area*/
@@ -73,57 +75,99 @@
 
 typedef struct
 {
-	volatile uint32_t  MODER;      /* GPIO port mode register. Address offset: 0x00 */
-	volatile uint32_t  OTYPER;     /* GPIO port output type register.  Address offset: 0x04*/
-	volatile uint32_t  OSPEEDR;   /* GPIO port output speed register. Address offset: 0x08 */
-	volatile uint32_t  PUPDR;     /* GPIO port pull-up/pull-down register. Address offset: 0x0C */
-	volatile uint32_t  IDR;       /* GPIO port input data register. Address offset: 0x10 */
-	volatile uint32_t  ODR;      /* GPIO port output data register . Address offset: 0x14 */
-	volatile uint32_t  BSRR;     /* GPIO port bit set/reset register. Address offset: 0x18 */
-	volatile uint32_t  LCKR;     /* GPIO port configuration lock register. Address offset: 0x1C */
-	volatile uint32_t  AFR[2];  /* GPIO alternate function low register . Address offset: 0x20 */
+	_vo uint32_t  MODER;      /* GPIO port mode register. Address offset: 0x00 */
+	_vo uint32_t  OTYPER;     /* GPIO port output type register.  Address offset: 0x04*/
+	_vo uint32_t  OSPEEDR;   /* GPIO port output speed register. Address offset: 0x08 */
+	_vo uint32_t  PUPDR;     /* GPIO port pull-up/pull-down register. Address offset: 0x0C */
+	_vo uint32_t  IDR;       /* GPIO port input data register. Address offset: 0x10 */
+	_vo uint32_t  ODR;      /* GPIO port output data register . Address offset: 0x14 */
+	_vo uint32_t  BSRR;     /* GPIO port bit set/reset register. Address offset: 0x18 */
+	_vo uint32_t  LCKR;     /* GPIO port configuration lock register. Address offset: 0x1C */
+	_vo uint32_t  AFR[2];  /* GPIO alternate function low register . Address offset: 0x20 */
 
 } GPIO_RegDef_t;
+
+
+/* peripheral register definition structure for EXTI */
+
+typedef struct
+{
+	_vo uint32_t  IMR;     /* Interrupt mask register. Address offset: 0x00 */
+	_vo uint32_t  EMR;     /* Event mask register.  Address offset: 0x04*/
+	_vo uint32_t  RTSR;    /* Rising trigger selection register. Address offset: 0x08 */
+	_vo uint32_t  FTSR;    /* Falling trigger selection register. Address offset: 0x0C */
+	_vo uint32_t  SWIER;   /* Software interrupt event register. Address offset: 0x10 */
+	_vo uint32_t  PR;      /* Pending register. Address offset: 0x14 */
+
+}EXTI_RedDef_t;
+
+
+/* peripheral register definition structure for SYSCGF */
+
+typedef struct
+{
+
+//	_vo uint32_t  SYSCFG_MEMRMP;     /* SYSCFG memory remap register. Address offset: 0x00 */
+//	_vo uint32_t  SYSCFG_PMC;        /* SYSCFG peripheral mode configuration register.  Address offset: 0x04*/
+//	_vo uint32_t  SYSCFG_EXTICR1;    /* SYSCFG external interrupt configuration register 1. Address offset: 0x08 */
+//	_vo uint32_t  SYSCFG_EXTICR2;    /* SYSCFG external interrupt configuration register 2. Address offset: 0x0C */
+//	_vo uint32_t  SYSCFG_EXTICR3;   /* SYSCFG external interrupt configuration register 3. Address offset: 0x10 */
+//	_vo uint32_t  SYSCFG_EXTICR4;   /* SYSCFG external interrupt configuration register 4. Address offset: 0x14 */
+//	    uint16_t  RESERVED;         /* Address offset: 0x18 */
+//	_vo uint32_t  SYSCFG_CMPCR;     /* SCompensation cell control register. Address offset: 0x20 */
+
+	_vo uint32_t MEMRMP;        /* Offset: 0x00 */
+	_vo uint32_t PCM;           /* Offset: 0x04 */
+	_vo uint32_t EXTICR[4];     /* Offset: 0x08 - 0x14 */
+	    uint32_t Reserved1[2];    /* Offset: 0x18 - 0x1C */
+	_vo uint32_t CMPCR;          /* Offset: 0x20 */
+        uint32_t Reserved2[2];    /* Offset: 0x24 - 0x28 */
+    _vo uint32_t CFGR;           /* Offset: 0x2C */
+
+
+
+
+}SYSCFG_RedDef_t;
 
 
 /* peripheral register definition structure for RCC */
 
 typedef struct
 {
-	volatile uint32_t  CR;      /* GPIO port mode register. Address offset: 0x00 */
-	volatile uint32_t  PLLCFGR;     /* GPIO port output type register.  Address offset: 0x04*/
-	volatile uint32_t  CFGR;   /* GPIO port output speed register. Address offset: 0x08 */
-	volatile uint32_t  CIR;         /*   0X0C */
-	volatile uint32_t  AHB1RSTR;     /* GPIO port pull-up/pull-down register. Address offset: 0x10 */
-	volatile uint32_t  AHB2RSTR;       /* GPIO port input data register. Address offset: 0x14 */
-	volatile uint32_t  AHB3RSTR;      /* GPIO port output data register . Address offset: 0x18 */
-	         uint32_t  Reserved0;     /* GPIO port bit set/reset register. Address offset: 0x1C */
-	volatile uint32_t  APB1RSTR;     /* GPIO port configuration lock register. Address offset: 0x20 */
-	volatile uint32_t  APB2RSTR;  /* GPIO alternate function low register . Address offset: 0x24 */
-	         uint32_t  Reserved1;     /* 0X28 */
-	         uint32_t  Reserved2;    /* 0X2C */
-	volatile uint32_t  AHB1ENR;     /* 0X30 */
-	volatile uint32_t  AHB2ENR;      /* 0X34 */
-	volatile uint32_t  AHB3ENR;     /* 0X38 */
-	         uint32_t  Reserved3;       /* 0X3c */
-	volatile uint32_t  APB1ENR;     /* 0X40 */
-	volatile uint32_t  APB2ENR;      /* 0X44 */
-             uint32_t  Reserved4;     /* 0X48 */
-             uint32_t  Reserved5;    /* 0X4C */
-	volatile uint32_t  AHB1LPENR;     /* 0X50 */
-	volatile uint32_t  AHB2LPENR;	  /*0x54 */
-	volatile uint32_t  AHB3LPENR;     /* 0X58 */
-             uint32_t  Reserved6;       /* 0X5C */
-    volatile uint32_t  APB1LPENR;     /* 0X60 */
-    volatile uint32_t  APB2LPENR;	  /*0x64 */
-             uint32_t  Reserved7;       /* 0X68 */
-             uint32_t  Reserved8;       /* 0X6C */
-    volatile uint32_t  BDCR;     /* 0X70 */
-    volatile uint32_t  CSR;     /* 0X74 */
-             uint32_t  Reserved9;       /* 0X78 */
-             uint32_t  Reserved10;       /* 0X7C */
-    volatile uint32_t  SSCGR;     /* 0X80 */
-    volatile uint32_t  PLLI2SCFGR;     /* 0X84 */
+	_vo uint32_t  CR;      /* GPIO port mode register. Address offset: 0x00 */
+	_vo uint32_t  PLLCFGR;     /* GPIO port output type register.  Address offset: 0x04*/
+	_vo uint32_t  CFGR;   /* GPIO port output speed register. Address offset: 0x08 */
+	_vo uint32_t  CIR;         /*   0X0C */
+	_vo uint32_t  AHB1RSTR;     /* GPIO port pull-up/pull-down register. Address offset: 0x10 */
+	_vo uint32_t  AHB2RSTR;       /* GPIO port input data register. Address offset: 0x14 */
+	_vo uint32_t  AHB3RSTR;      /* GPIO port output data register . Address offset: 0x18 */
+	    uint32_t  Reserved0;     /* GPIO port bit set/reset register. Address offset: 0x1C */
+	_vo uint32_t  APB1RSTR;     /* GPIO port configuration lock register. Address offset: 0x20 */
+	_vo uint32_t  APB2RSTR;  /* GPIO alternate function low register . Address offset: 0x24 */
+	    uint32_t  Reserved1;     /* 0X28 */
+	    uint32_t  Reserved2;    /* 0X2C */
+	_vo uint32_t  AHB1ENR;     /* 0X30 */
+	_vo uint32_t  AHB2ENR;      /* 0X34 */
+	_vo uint32_t  AHB3ENR;     /* 0X38 */
+	    uint32_t  Reserved3;       /* 0X3c */
+	_vo uint32_t  APB1ENR;     /* 0X40 */
+	_vo uint32_t  APB2ENR;      /* 0X44 */
+        uint32_t  Reserved4;     /* 0X48 */
+        uint32_t  Reserved5;    /* 0X4C */
+	_vo uint32_t  AHB1LPENR;     /* 0X50 */
+	_vo uint32_t  AHB2LPENR;	  /*0x54 */
+	_vo uint32_t  AHB3LPENR;     /* 0X58 */
+        uint32_t  Reserved6;       /* 0X5C */
+    _vo uint32_t  APB1LPENR;     /* 0X60 */
+    _vo uint32_t  APB2LPENR;	  /*0x64 */
+        uint32_t  Reserved7;       /* 0X68 */
+        uint32_t  Reserved8;       /* 0X6C */
+    _vo uint32_t  BDCR;     /* 0X70 */
+    _vo uint32_t  CSR;     /* 0X74 */
+        uint32_t  Reserved9;       /* 0X78 */
+        uint32_t  Reserved10;       /* 0X7C */
+    _vo uint32_t  SSCGR;     /* 0X80 */
+    _vo uint32_t  PLLI2SCFGR;     /* 0X84 */
 
 } RCC_RegDef_t;
 
@@ -146,6 +190,11 @@ typedef struct
 
 #define RCC      ((RCC_RegDef_t*)RCC_BASEADDR)
 
+/* EXTI access address */
+#define EXTI     ((EXTI_RedDef_t*)EXTI_BASEADDR)
+
+/* EXTI access address */
+#define SYSCFG   ((SYSCFG_RedDef_t*)SYSCFG_BASEADDR)
 
 /* Clock Enable Macros for GPIOx peripherals */
 
@@ -180,7 +229,7 @@ typedef struct
 
 
 /* Clock Enable Macros for SYSCFG peripheral */
-#define SYSCFG_PCLK_EN()  (RCC->APB2ENR) |= (1<<14))
+#define SYSCFG_PCLK_EN()  (RCC->APB2ENR |= (1<<14))
 
 
 /* Clock Disable Macros for GPIOx peripherals */
@@ -228,6 +277,16 @@ typedef struct
 #define GPIOH_REG_RESET()   do{(RCC->AHB1RSTR |= (1<<7));  (RCC->AHB1RSTR &= ~(1<<7));}while(0)
 #define GPIOI_REG_RESET()   do{(RCC->AHB1RSTR |= (1<<8));  (RCC->AHB1RSTR &= ~(1<<8));}while(0)
 
+
+
+#define GPIO_BASEADDR_TO_CODE(x)        ((x == GPIOA)?0 :\
+		                                 (x == GPIOB)?1 :\
+		                                 (x == GPIOC)?2 :\
+                                         (x == GPIOD)?3 :\
+                                         (x == GPIOE)?4 :\
+                                         (x == GPIOF)?5 :\
+                                         (x == GPIOG)?6 :\
+                                         (x == GPIOH)?7 :0)
 
 /* Generic Macros  */
 #define ENABLE          1

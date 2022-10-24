@@ -140,6 +140,41 @@ void GPIO_Init(GPIO_Handle_t *pGPIOHandle){
 	else   //interrupt modes
 	{
 
+		if(pGPIOHandle->GPIOPinConfig.GPIO_PinMode < GPIO_MODE_IT_FT)
+		{
+			//1. Configure the FTSR
+			EXTI->FTSR |= pGPIOHandle->GPIOPinConfig.GPIO_PinNumber;
+			// Clear the corresponding RTSR bit
+			EXTI->RTSR &= ~(pGPIOHandle->GPIOPinConfig.GPIO_PinNumber);
+
+		}
+		else if(pGPIOHandle->GPIOPinConfig.GPIO_PinMode < GPIO_MODE_IT_RT)
+		{
+			//1. Configure the RTSR
+			EXTI->RTSR |= pGPIOHandle->GPIOPinConfig.GPIO_PinNumber;
+			// clear the corresponding FTSR bit
+			EXTI->FTSR &= ~(pGPIOHandle->GPIOPinConfig.GPIO_PinNumber);
+
+		}
+		else if(pGPIOHandle->GPIOPinConfig.GPIO_PinMode < GPIO_MODE_IT_RFT)
+		{
+			//1. Configure both the FTSR and RTSR
+			EXTI->FTSR |= pGPIOHandle->GPIOPinConfig.GPIO_PinNumber;
+			EXTI->RTSR |= pGPIOHandle->GPIOPinConfig.GPIO_PinNumber;
+
+		}
+
+		//2. Configure the GPIO port selection in SYSCFG_EXTICR
+		uint8_t temp1 = pGPIOHandle->GPIOPinConfig.GPIO_PinNumber / 4;
+		uint8_t temp2 = pGPIOHandle->GPIOPinConfig.GPIO_PinNumber % 4;
+		uint8_t portcode = GPIO_BASEADDR_TO_CODE(pGPIOHandle->pGPIOx);
+        SYSCFG->EXTICR[temp1] = portcode << (temp2 * 4);
+        //SYSCFG_PCLK_EN();
+        SYSCFG_PCLK_EN();
+
+		//3. Enable the exti interrupt delivery using IMR
+		EXTI->IMR |= pGPIOHandle->GPIOPinConfig.GPIO_PinNumber;
+
 
 
 
