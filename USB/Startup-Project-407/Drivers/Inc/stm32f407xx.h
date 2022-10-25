@@ -31,9 +31,10 @@
 #define  NVIC_ICER2         ( (__vo uint32_t*)0XE000E188 )
 #define  NVIC_ICER3         ( (__vo uint32_t*)0XE000E18C )
 
+/*    ARM Cortex M4 Processor Priority Address Calculation*/
+#define  NVIC_PR_BASE_ADDRS  ( (__vo uint32_t*)0XE000E400 )
 
-
-
+#define  NO_PR_BITS_IMPLEMENTED      4
 /* Base address for flash and SRAM */
 
 #define FLASH_BASEADDR      0X08000000U     /*Base address for flash area*/
@@ -310,13 +311,6 @@ typedef struct
                                          (x == GPIOG)?6 :\
                                          (x == GPIOH)?7 :0)
 
-/* Generic Macros  */
-#define ENABLE          1
-#define DISABLE         0
-#define SET             ENABLE
-#define RESET           DISABLE
-#define GPIO_PIN_SET    SET
-#define GPIO_PIN_RESET  RESET
 
 
 /*
@@ -330,6 +324,19 @@ typedef struct
 #define IRQ_NO_EXTI4       10
 #define IRQ_NO_EXTI9_5     23
 #define IRQ_NO_EXTI15_10   40
+
+
+
+
+/* Generic Macros  */
+#define ENABLE          1
+#define DISABLE         0
+#define SET             ENABLE
+#define RESET           DISABLE
+#define GPIO_PIN_SET    SET
+#define GPIO_PIN_RESET  RESET
+
+
 
 
 

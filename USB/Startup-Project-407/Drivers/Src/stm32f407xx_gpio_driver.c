@@ -421,7 +421,7 @@ void     GPIO_ToggleOutputPin(GPIO_RegDef_t *pGPIOx, uint8_t PinNumber){
  *
  *
  ********************************************************************************/
-void GPIO_IRQConfig(uint8_t IRQNumber, uint8_t IRQPriority, uint8_t EnorDis){
+void GPIO_IRQInterruptConfig(uint8_t IRQNumber, uint8_t EnorDis){
 
 	if(EnorDis == ENABLE)
 	{
@@ -460,9 +460,11 @@ void GPIO_IRQConfig(uint8_t IRQNumber, uint8_t IRQPriority, uint8_t EnorDis){
 	}
 }
 
+
+
 /******************************************************************************
  *
- * @fn        GPIO_IRQHandling
+ * @fn        GPIO_IRQPriorityConfig
  *
  * @brief
  *
@@ -475,9 +477,15 @@ void GPIO_IRQConfig(uint8_t IRQNumber, uint8_t IRQPriority, uint8_t EnorDis){
  *
  *
  ********************************************************************************/
-void GPIO_IRQHandling(uint8_t PinNumber){
+void GPIO_IRQPriorityConfig(uint8_t IRQNumber, uint8_t IRQPriotiy){
 
+	//	1. Find the IPR number
+	uint8_t iprx = IRQNumber / 4;
+	uint8_t iprx_section = IRQNumber % 4;
 
+	uint8_t shift_amount = (8 * iprx_section) + (8 - NO_PR_BITS_IMPLEMENTED);
+
+	*(NVIC_PR_BASE_ADDRS + (iprx * 4)) |= (IRQPriotiy << shift_amount);
 
 
 }
