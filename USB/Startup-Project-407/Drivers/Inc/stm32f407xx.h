@@ -16,14 +16,21 @@
 
 /*************START:  PROCESSOR SPECIFIC DETAILS******************************************
  *
- * 			ARM CORTEX M4 Processor  NVIC ISERx Register Addresses
  *
  */
 
+/* 		 ARM CORTEX M4 Processor  NVIC ISERx Register Addresses  */
 #define  NVIC_ISER0         ( (__vo uint32_t*)0xE000E100 )
-#define  NVIC_ISER1         ( (__vo uint32_t*)0XE000E180 )
-#define  NVIC_ISER2         ( (__vo uint32_t*)0XE000E200 )
-#define  NVIC_ISER3         ( (__vo uint32_t*)0XE000E280 )
+#define  NVIC_ISER1         ( (__vo uint32_t*)0XE000E104 )
+#define  NVIC_ISER2         ( (__vo uint32_t*)0XE000E108 )
+#define  NVIC_ISER3         ( (__vo uint32_t*)0XE000E10C )
+
+/* 		 ARM CORTEX M4 Processor  NVIC ICERx Register Addresses */
+#define  NVIC_ICER0         ( (__vo uint32_t*)0xE000E180 )
+#define  NVIC_ICER1         ( (__vo uint32_t*)0XE000E184 )
+#define  NVIC_ICER2         ( (__vo uint32_t*)0XE000E188 )
+#define  NVIC_ICER3         ( (__vo uint32_t*)0XE000E18C )
+
 
 
 
