@@ -10,7 +10,22 @@
 
 #include  <stdint.h>
 
-#define _vo                 volatile
+#define __vo                 volatile
+
+
+
+/*************START:  PROCESSOR SPECIFIC DETAILS******************************************
+ *
+ * 			ARM CORTEX M4 Processor  NVIC ISERx Register Addresses
+ *
+ */
+
+#define  NVIC_ISER0         ( (__vo uint32_t*)0xE000E100 )
+#define  NVIC_ISER1         ( (__vo uint32_t*)0XE000E180 )
+#define  NVIC_ISER2         ( (__vo uint32_t*)0XE000E200 )
+#define  NVIC_ISER3         ( (__vo uint32_t*)0XE000E280 )
+
+
 
 /* Base address for flash and SRAM */
 
@@ -75,15 +90,15 @@
 
 typedef struct
 {
-	_vo uint32_t  MODER;      /* GPIO port mode register. Address offset: 0x00 */
-	_vo uint32_t  OTYPER;     /* GPIO port output type register.  Address offset: 0x04*/
-	_vo uint32_t  OSPEEDR;   /* GPIO port output speed register. Address offset: 0x08 */
-	_vo uint32_t  PUPDR;     /* GPIO port pull-up/pull-down register. Address offset: 0x0C */
-	_vo uint32_t  IDR;       /* GPIO port input data register. Address offset: 0x10 */
-	_vo uint32_t  ODR;      /* GPIO port output data register . Address offset: 0x14 */
-	_vo uint32_t  BSRR;     /* GPIO port bit set/reset register. Address offset: 0x18 */
-	_vo uint32_t  LCKR;     /* GPIO port configuration lock register. Address offset: 0x1C */
-	_vo uint32_t  AFR[2];  /* GPIO alternate function low register . Address offset: 0x20 */
+	__vo uint32_t  MODER;      /* GPIO port mode register. Address offset: 0x00 */
+	__vo uint32_t  OTYPER;     /* GPIO port output type register.  Address offset: 0x04*/
+	__vo uint32_t  OSPEEDR;   /* GPIO port output speed register. Address offset: 0x08 */
+	__vo uint32_t  PUPDR;     /* GPIO port pull-up/pull-down register. Address offset: 0x0C */
+	__vo uint32_t  IDR;       /* GPIO port input data register. Address offset: 0x10 */
+	__vo uint32_t  ODR;      /* GPIO port output data register . Address offset: 0x14 */
+	__vo uint32_t  BSRR;     /* GPIO port bit set/reset register. Address offset: 0x18 */
+	__vo uint32_t  LCKR;     /* GPIO port configuration lock register. Address offset: 0x1C */
+	__vo uint32_t  AFR[2];  /* GPIO alternate function low register . Address offset: 0x20 */
 
 } GPIO_RegDef_t;
 
@@ -92,12 +107,12 @@ typedef struct
 
 typedef struct
 {
-	_vo uint32_t  IMR;     /* Interrupt mask register. Address offset: 0x00 */
-	_vo uint32_t  EMR;     /* Event mask register.  Address offset: 0x04*/
-	_vo uint32_t  RTSR;    /* Rising trigger selection register. Address offset: 0x08 */
-	_vo uint32_t  FTSR;    /* Falling trigger selection register. Address offset: 0x0C */
-	_vo uint32_t  SWIER;   /* Software interrupt event register. Address offset: 0x10 */
-	_vo uint32_t  PR;      /* Pending register. Address offset: 0x14 */
+	__vo uint32_t  IMR;     /* Interrupt mask register. Address offset: 0x00 */
+	__vo uint32_t  EMR;     /* Event mask register.  Address offset: 0x04*/
+	__vo uint32_t  RTSR;    /* Rising trigger selection register. Address offset: 0x08 */
+	__vo uint32_t  FTSR;    /* Falling trigger selection register. Address offset: 0x0C */
+	__vo uint32_t  SWIER;   /* Software interrupt event register. Address offset: 0x10 */
+	__vo uint32_t  PR;      /* Pending register. Address offset: 0x14 */
 
 }EXTI_RedDef_t;
 
@@ -116,13 +131,13 @@ typedef struct
 //	    uint16_t  RESERVED;         /* Address offset: 0x18 */
 //	_vo uint32_t  SYSCFG_CMPCR;     /* SCompensation cell control register. Address offset: 0x20 */
 
-	_vo uint32_t MEMRMP;        /* Offset: 0x00 */
-	_vo uint32_t PCM;           /* Offset: 0x04 */
-	_vo uint32_t EXTICR[4];     /* Offset: 0x08 - 0x14 */
-	    uint32_t Reserved1[2];    /* Offset: 0x18 - 0x1C */
-	_vo uint32_t CMPCR;          /* Offset: 0x20 */
-        uint32_t Reserved2[2];    /* Offset: 0x24 - 0x28 */
-    _vo uint32_t CFGR;           /* Offset: 0x2C */
+	__vo uint32_t MEMRMP;        /* Offset: 0x00 */
+	__vo uint32_t PCM;           /* Offset: 0x04 */
+	__vo uint32_t EXTICR[4];     /* Offset: 0x08 - 0x14 */
+	     uint32_t Reserved1[2];    /* Offset: 0x18 - 0x1C */
+	__vo uint32_t CMPCR;          /* Offset: 0x20 */
+         uint32_t Reserved2[2];    /* Offset: 0x24 - 0x28 */
+    __vo uint32_t CFGR;           /* Offset: 0x2C */
 
 
 
@@ -134,40 +149,40 @@ typedef struct
 
 typedef struct
 {
-	_vo uint32_t  CR;      /* GPIO port mode register. Address offset: 0x00 */
-	_vo uint32_t  PLLCFGR;     /* GPIO port output type register.  Address offset: 0x04*/
-	_vo uint32_t  CFGR;   /* GPIO port output speed register. Address offset: 0x08 */
-	_vo uint32_t  CIR;         /*   0X0C */
-	_vo uint32_t  AHB1RSTR;     /* GPIO port pull-up/pull-down register. Address offset: 0x10 */
-	_vo uint32_t  AHB2RSTR;       /* GPIO port input data register. Address offset: 0x14 */
-	_vo uint32_t  AHB3RSTR;      /* GPIO port output data register . Address offset: 0x18 */
-	    uint32_t  Reserved0;     /* GPIO port bit set/reset register. Address offset: 0x1C */
-	_vo uint32_t  APB1RSTR;     /* GPIO port configuration lock register. Address offset: 0x20 */
-	_vo uint32_t  APB2RSTR;  /* GPIO alternate function low register . Address offset: 0x24 */
-	    uint32_t  Reserved1;     /* 0X28 */
-	    uint32_t  Reserved2;    /* 0X2C */
-	_vo uint32_t  AHB1ENR;     /* 0X30 */
-	_vo uint32_t  AHB2ENR;      /* 0X34 */
-	_vo uint32_t  AHB3ENR;     /* 0X38 */
-	    uint32_t  Reserved3;       /* 0X3c */
-	_vo uint32_t  APB1ENR;     /* 0X40 */
-	_vo uint32_t  APB2ENR;      /* 0X44 */
-        uint32_t  Reserved4;     /* 0X48 */
-        uint32_t  Reserved5;    /* 0X4C */
-	_vo uint32_t  AHB1LPENR;     /* 0X50 */
-	_vo uint32_t  AHB2LPENR;	  /*0x54 */
-	_vo uint32_t  AHB3LPENR;     /* 0X58 */
-        uint32_t  Reserved6;       /* 0X5C */
-    _vo uint32_t  APB1LPENR;     /* 0X60 */
-    _vo uint32_t  APB2LPENR;	  /*0x64 */
-        uint32_t  Reserved7;       /* 0X68 */
-        uint32_t  Reserved8;       /* 0X6C */
-    _vo uint32_t  BDCR;     /* 0X70 */
-    _vo uint32_t  CSR;     /* 0X74 */
-        uint32_t  Reserved9;       /* 0X78 */
-        uint32_t  Reserved10;       /* 0X7C */
-    _vo uint32_t  SSCGR;     /* 0X80 */
-    _vo uint32_t  PLLI2SCFGR;     /* 0X84 */
+	__vo uint32_t  CR;      /* GPIO port mode register. Address offset: 0x00 */
+	__vo uint32_t  PLLCFGR;     /* GPIO port output type register.  Address offset: 0x04*/
+	__vo uint32_t  CFGR;   /* GPIO port output speed register. Address offset: 0x08 */
+	__vo uint32_t  CIR;         /*   0X0C */
+	__vo uint32_t  AHB1RSTR;     /* GPIO port pull-up/pull-down register. Address offset: 0x10 */
+	__vo uint32_t  AHB2RSTR;       /* GPIO port input data register. Address offset: 0x14 */
+	__vo uint32_t  AHB3RSTR;      /* GPIO port output data register . Address offset: 0x18 */
+	     uint32_t  Reserved0;     /* GPIO port bit set/reset register. Address offset: 0x1C */
+	__vo uint32_t  APB1RSTR;     /* GPIO port configuration lock register. Address offset: 0x20 */
+	__vo uint32_t  APB2RSTR;  /* GPIO alternate function low register . Address offset: 0x24 */
+	     uint32_t  Reserved1;     /* 0X28 */
+	     uint32_t  Reserved2;    /* 0X2C */
+	__vo uint32_t  AHB1ENR;     /* 0X30 */
+	__vo uint32_t  AHB2ENR;      /* 0X34 */
+	__vo uint32_t  AHB3ENR;     /* 0X38 */
+	     uint32_t  Reserved3;       /* 0X3c */
+	__vo uint32_t  APB1ENR;     /* 0X40 */
+	__vo uint32_t  APB2ENR;      /* 0X44 */
+         uint32_t  Reserved4;     /* 0X48 */
+         uint32_t  Reserved5;    /* 0X4C */
+	__vo uint32_t  AHB1LPENR;     /* 0X50 */
+	__vo uint32_t  AHB2LPENR;	  /*0x54 */
+	__vo uint32_t  AHB3LPENR;     /* 0X58 */
+         uint32_t  Reserved6;       /* 0X5C */
+    __vo uint32_t  APB1LPENR;     /* 0X60 */
+    __vo uint32_t  APB2LPENR;	  /*0x64 */
+         uint32_t  Reserved7;       /* 0X68 */
+         uint32_t  Reserved8;       /* 0X6C */
+    __vo uint32_t  BDCR;     /* 0X70 */
+    __vo uint32_t  CSR;     /* 0X74 */
+         uint32_t  Reserved9;       /* 0X78 */
+         uint32_t  Reserved10;       /* 0X7C */
+    __vo uint32_t  SSCGR;     /* 0X80 */
+    __vo uint32_t  PLLI2SCFGR;     /* 0X84 */
 
 } RCC_RegDef_t;
 
@@ -296,6 +311,18 @@ typedef struct
 #define GPIO_PIN_SET    SET
 #define GPIO_PIN_RESET  RESET
 
+
+/*
+ *  IRQ(Interrupt Request) Number or STM32F407x
+ *  Positions in NVIC table
+ */
+#define IRQ_NO_EXTI0       6
+#define IRQ_NO_EXTI1       7
+#define IRQ_NO_EXTI2       8
+#define IRQ_NO_EXTI3       9
+#define IRQ_NO_EXTI4       10
+#define IRQ_NO_EXTI9_5     23
+#define IRQ_NO_EXTI15_10   40
 
 
 

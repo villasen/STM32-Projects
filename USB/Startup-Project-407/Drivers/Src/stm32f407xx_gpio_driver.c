@@ -176,8 +176,6 @@ void GPIO_Init(GPIO_Handle_t *pGPIOHandle){
 		EXTI->IMR |= pGPIOHandle->GPIOPinConfig.GPIO_PinNumber;
 
 
-
-
 	}
 
 	temp = 0;
@@ -383,7 +381,6 @@ void     GPIO_WriteFromOutputPort(GPIO_RegDef_t *pGPIOx, uint16_t value)
 
 	pGPIOx->ODR |= value;
 
-
 }
 
 
@@ -404,9 +401,7 @@ void     GPIO_WriteFromOutputPort(GPIO_RegDef_t *pGPIOx, uint16_t value)
  ********************************************************************************/
 void     GPIO_ToggleOutputPin(GPIO_RegDef_t *pGPIOx, uint8_t PinNumber){
 
-
 	pGPIOx->ODR ^= (1 << PinNumber);
-
 
 }
 
@@ -427,6 +422,65 @@ void     GPIO_ToggleOutputPin(GPIO_RegDef_t *pGPIOx, uint8_t PinNumber){
  *
  ********************************************************************************/
 void GPIO_IRQConfig(uint8_t IRQNumber, uint8_t IRQPriority, uint8_t EnorDis){
+
+	if(EnorDis == ENABLE)
+	{
+		if(IRQNumber <= 31)
+		{
+
+			//Program ISER0 Register
+
+
+
+		}
+		else if( IRQNumber >31 && IRQNumber < 64)
+		{
+			//Program ISER1 Register
+
+
+
+
+
+
+		}
+		else if (IRQNumber > 64 && IRQNumber < 96){
+
+			//Program ISER2 Register
+
+
+		}
+
+	}
+	else
+	{
+
+		if(IRQNumber <= 31)
+		{
+
+			//Program ICER0 Register
+
+
+
+		}
+		else if( IRQNumber >31 && IRQNumber < 64)
+		{
+
+			//Program ICER1 Register
+
+
+
+
+
+		}
+		else if (IRQNumber > 64 && IRQNumber < 96){
+
+			//Program ICER2 Register
+
+
+		}
+
+
+	}
 
 
 
