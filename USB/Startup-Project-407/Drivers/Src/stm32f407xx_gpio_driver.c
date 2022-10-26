@@ -460,7 +460,32 @@ void GPIO_IRQInterruptConfig(uint8_t IRQNumber, uint8_t EnorDis){
 	}
 }
 
+/******************************************************************************
+ *
+ * @fn        GPIO_IRQHandling
+ *
+ * @brief
+ *
+ * @parma[i]
+ *
+ * @return
+ *
+ * @note
+ *
+ *
+ *
+ ********************************************************************************/
+void GPIO_IRQHandling(uint8_t PinNumber){
 
+	// Clear the EXTI PR register
+	if (EXTI->PR & (1 << PinNumber)){
+
+		EXTI->PR |= (1 << PinNumber);
+
+	}
+
+
+}
 
 /******************************************************************************
  *
