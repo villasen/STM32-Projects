@@ -7,14 +7,23 @@
 
 
 #include "stm32f407xx.h"
+#include <string.h>
 
+void delay(void)
+{
 
+	for (uint32_t i=0; i< 500000/2 ; i++);
+}
 
 int main(void)
 {
 
 	// create handle
 	GPIO_Handle_t  GpioLed, GpioButton;
+
+	// initialize the structures
+	memset(&GpioLed, 0, sizeof(GpioLed));
+	memset(&GpioButton, 0, sizeof(GpioButton));
 
 	GpioLed.pGPIOx = GPIOD;
 	GpioLed.GPIOPinConfig.GPIO_PinNumber = GPIO_PIN_NO_12;
@@ -46,6 +55,9 @@ int main(void)
 	GPIO_IRQInterruptConfig(IRQ_NO_EXTI9_5, ENABLE);
 
 
+	while(1);
+
+
 	return 0;
 }
 
@@ -54,6 +66,7 @@ int main(void)
 // ISR for button press on EXTI on D5
 void EXTI9_5_IRQHandler(void){
 
+	delay();
 	GPIO_IRQHandling(GPIO_PIN_NO_5);
 	GPIO_ToggleOutputPin(GPIOD, GPIO_PIN_NO_12);
 
