@@ -143,8 +143,6 @@ int main()
 
     display_numbers(numbers,len,"I-sorted array   :");
 
-    display_numbers(numbers,len,"I-sorted array again   :");
-
 
 
     return 0;
