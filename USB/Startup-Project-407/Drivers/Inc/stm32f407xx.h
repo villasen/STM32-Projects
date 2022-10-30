@@ -35,6 +35,8 @@
 #define  NVIC_PR_BASE_ADDRS  ( (__vo uint32_t*)0XE000E400 )
 
 #define  NO_PR_BITS_IMPLEMENTED      4
+
+
 /* Base address for flash and SRAM */
 
 #define FLASH_BASEADDR      0X08000000U     /*Base address for flash area*/
@@ -129,26 +131,13 @@ typedef struct
 
 typedef struct
 {
-
-//	_vo uint32_t  SYSCFG_MEMRMP;     /* SYSCFG memory remap register. Address offset: 0x00 */
-//	_vo uint32_t  SYSCFG_PMC;        /* SYSCFG peripheral mode configuration register.  Address offset: 0x04*/
-//	_vo uint32_t  SYSCFG_EXTICR1;    /* SYSCFG external interrupt configuration register 1. Address offset: 0x08 */
-//	_vo uint32_t  SYSCFG_EXTICR2;    /* SYSCFG external interrupt configuration register 2. Address offset: 0x0C */
-//	_vo uint32_t  SYSCFG_EXTICR3;   /* SYSCFG external interrupt configuration register 3. Address offset: 0x10 */
-//	_vo uint32_t  SYSCFG_EXTICR4;   /* SYSCFG external interrupt configuration register 4. Address offset: 0x14 */
-//	    uint16_t  RESERVED;         /* Address offset: 0x18 */
-//	_vo uint32_t  SYSCFG_CMPCR;     /* SCompensation cell control register. Address offset: 0x20 */
-
-	__vo uint32_t MEMRMP;        /* Offset: 0x00 */
-	__vo uint32_t PCM;           /* Offset: 0x04 */
-	__vo uint32_t EXTICR[4];     /* Offset: 0x08 - 0x14 */
+	__vo uint32_t MEMRMP;        /* memory remap register. Offset: 0x00 */
+	__vo uint32_t PCM;           /* peripheral mode configuration register. Offset: 0x04 */
+	__vo uint32_t EXTICR[4];     /* external interrupt configuration register 1,2,3,4. Offset: 0x08 - 0x14 */
 	     uint32_t Reserved1[2];    /* Offset: 0x18 - 0x1C */
-	__vo uint32_t CMPCR;          /* Offset: 0x20 */
+	__vo uint32_t CMPCR;          /* Compensation cell control register. Offset: 0x20 */
          uint32_t Reserved2[2];    /* Offset: 0x24 - 0x28 */
-    __vo uint32_t CFGR;           /* Offset: 0x2C */
-
-
-
+ //   __vo uint32_t CFGR;           /* Offset: 0x2C */
 
 }SYSCFG_RedDef_t;
 
@@ -157,40 +146,40 @@ typedef struct
 
 typedef struct
 {
-	__vo uint32_t  CR;      /* GPIO port mode register. Address offset: 0x00 */
-	__vo uint32_t  PLLCFGR;     /* GPIO port output type register.  Address offset: 0x04*/
-	__vo uint32_t  CFGR;   /* GPIO port output speed register. Address offset: 0x08 */
-	__vo uint32_t  CIR;         /*   0X0C */
-	__vo uint32_t  AHB1RSTR;     /* GPIO port pull-up/pull-down register. Address offset: 0x10 */
-	__vo uint32_t  AHB2RSTR;       /* GPIO port input data register. Address offset: 0x14 */
-	__vo uint32_t  AHB3RSTR;      /* GPIO port output data register . Address offset: 0x18 */
-	     uint32_t  Reserved0;     /* GPIO port bit set/reset register. Address offset: 0x1C */
-	__vo uint32_t  APB1RSTR;     /* GPIO port configuration lock register. Address offset: 0x20 */
-	__vo uint32_t  APB2RSTR;  /* GPIO alternate function low register . Address offset: 0x24 */
-	     uint32_t  Reserved1;     /* 0X28 */
-	     uint32_t  Reserved2;    /* 0X2C */
-	__vo uint32_t  AHB1ENR;     /* 0X30 */
-	__vo uint32_t  AHB2ENR;      /* 0X34 */
-	__vo uint32_t  AHB3ENR;     /* 0X38 */
+	__vo uint32_t  CR;      /* clock control register. Address offset: 0x00 */
+	__vo uint32_t  PLLCFGR;     /* PLL configuration register .  Address offset: 0x04*/
+	__vo uint32_t  CFGR;   /* clock configuration register. Address offset: 0x08 */
+	__vo uint32_t  CIR;         /*  clock interrupt register. 0X0C */
+	__vo uint32_t  AHB1RSTR;     /* AHB1 peripheral reset register. Address offset: 0x10 */
+	__vo uint32_t  AHB2RSTR;       /* AHB2 peripheral reset register. Address offset: 0x14 */
+	__vo uint32_t  AHB3RSTR;      /* AHB3 peripheral reset register . Address offset: 0x18 */
+	     uint32_t  Reserved0;     /* Address offset: 0x1C */
+	__vo uint32_t  APB1RSTR;     /* APB1 peripheral reset register. Address offset: 0x20 */
+	__vo uint32_t  APB2RSTR;    /* APB2 peripheral reset register . Address offset: 0x24 */
+	     uint32_t  Reserved1;     /* Address offset: 0X28 */
+	     uint32_t  Reserved2;    /* Address offset: 0X2C */
+	__vo uint32_t  AHB1ENR;     /* AHB1 peripheral clock register. Address offset: 0X30.  */
+	__vo uint32_t  AHB2ENR;      /* AHB2 peripheral clock enable register. Address offset: 0X34 */
+	__vo uint32_t  AHB3ENR;     /* AHB3 peripheral clock enable register. Address offset:  0X38 */
 	     uint32_t  Reserved3;       /* 0X3c */
-	__vo uint32_t  APB1ENR;     /* 0X40 */
-	__vo uint32_t  APB2ENR;      /* 0X44 */
-         uint32_t  Reserved4;     /* 0X48 */
-         uint32_t  Reserved5;    /* 0X4C */
-	__vo uint32_t  AHB1LPENR;     /* 0X50 */
-	__vo uint32_t  AHB2LPENR;	  /*0x54 */
-	__vo uint32_t  AHB3LPENR;     /* 0X58 */
-         uint32_t  Reserved6;       /* 0X5C */
-    __vo uint32_t  APB1LPENR;     /* 0X60 */
-    __vo uint32_t  APB2LPENR;	  /*0x64 */
-         uint32_t  Reserved7;       /* 0X68 */
-         uint32_t  Reserved8;       /* 0X6C */
-    __vo uint32_t  BDCR;     /* 0X70 */
-    __vo uint32_t  CSR;     /* 0X74 */
-         uint32_t  Reserved9;       /* 0X78 */
-         uint32_t  Reserved10;       /* 0X7C */
-    __vo uint32_t  SSCGR;     /* 0X80 */
-    __vo uint32_t  PLLI2SCFGR;     /* 0X84 */
+	__vo uint32_t  APB1ENR;     /* APB1 peripheral clock enable register . Address offset:  Address offset: 0X40 */
+	__vo uint32_t  APB2ENR;      /* APB2 peripheral clock enable register. Address offset: Address offset:  0X44 */
+         uint32_t  Reserved4;     /* Address offset: Address offset:  0X48 */
+         uint32_t  Reserved5;    /* Address offset: Address offset: 0X4C */
+	__vo uint32_t  AHB1LPENR;     /* AHB1 peripheral clock enable in low power mode register. Address offset: 0X50 */
+	__vo uint32_t  AHB2LPENR;	  /* AHB2 peripheral clock enable in low power mode register. Address offset: 0x54 */
+	__vo uint32_t  AHB3LPENR;     /* AHB3 peripheral clock enable in low power mode register. Address offset: 0X58 */
+         uint32_t  Reserved6;       /*Address offset:  0X5C */
+    __vo uint32_t  APB1LPENR;     /* APB1 peripheral clock enable in low power mode register. Address offset: 0X60 */
+    __vo uint32_t  APB2LPENR;	  /* APB2 peripheral clock enable in low power mode register. Address offset: 0x64 */
+         uint32_t  Reserved7;       /* Address offset: 0X68 */
+         uint32_t  Reserved8;       /* Address offset: 0X6C */
+    __vo uint32_t  BDCR;     /* Backup domain control register. Address offset: 0X70 */
+    __vo uint32_t  CSR;     /*  clock control & status register . Address offset:  0X74 */
+         uint32_t  Reserved9;       /* Address offset: 0X78 */
+         uint32_t  Reserved10;       /* Address offset: 0X7C */
+    __vo uint32_t  SSCGR;     /* spread spectrum clock generation register. Address offset: 0X80 */
+    __vo uint32_t  PLLI2SCFGR;     /* PLLI2S configuration register. Address offset: 0X84 */
 
 } RCC_RegDef_t;
 
