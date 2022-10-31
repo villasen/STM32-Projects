@@ -14,6 +14,27 @@
 #define __vo                 volatile
 
 
+/*************START:  PROCESSOR SPECIFIC DETAILS******************************************
+ *
+ *
+ */
+
+/* 		 ARM CORTEX M4 Processor  NVIC ISERx Register Addresses  */
+#define  NVIC_ISER0         ( (__vo uint32_t*)0xE000E100 )
+#define  NVIC_ISER1         ( (__vo uint32_t*)0XE000E104 )
+#define  NVIC_ISER2         ( (__vo uint32_t*)0XE000E108 )
+#define  NVIC_ISER3         ( (__vo uint32_t*)0XE000E10C )
+
+/* 		 ARM CORTEX M4 Processor  NVIC ICERx Register Addresses */
+#define  NVIC_ICER0         ( (__vo uint32_t*)0xE000E180 )
+#define  NVIC_ICER1         ( (__vo uint32_t*)0XE000E184 )
+#define  NVIC_ICER2         ( (__vo uint32_t*)0XE000E188 )
+#define  NVIC_ICER3         ( (__vo uint32_t*)0XE000E18C )
+
+/*    ARM Cortex M4 Processor Priority Address Calculation*/
+#define  NVIC_PR_BASE_ADDRS  ( (__vo uint32_t*)0XE000E400 )
+
+#define  NO_PR_BITS_IMPLEMENTED      4
 /* Base address for flash and SRAM */
 
 #define FLASH_BASEADDR      0X08000000U     /*Base address for flash area*/
@@ -277,6 +298,53 @@ typedef struct
                                          (x == GPIOH)?7 :0)
 
 
+/*
+ *  IRQ(Interrupt Request) Number or STM32F407x
+ *  Positions in NVIC table
+ */
+#define IRQ_NO_EXTI0       6
+#define IRQ_NO_EXTI1       7
+#define IRQ_NO_EXTI2       8
+#define IRQ_NO_EXTI3       9
+#define IRQ_NO_EXTI4       10
+#define IRQ_NO_EXTI9_5     23
+#define IRQ_NO_EXTI15_10   40
 
+
+/*
+ *  IRQ Priority levels
+ */
+#define NVIC_IRQ_PRI0        0
+#define NVIC_IRQ_PRI1        1
+#define NVIC_IRQ_PRI2        2
+#define NVIC_IRQ_PRI3        3
+#define NVIC_IRQ_PRI4        4
+#define NVIC_IRQ_PRI5        5
+#define NVIC_IRQ_PRI6        6
+#define NVIC_IRQ_PRI7        7
+#define NVIC_IRQ_PRI8        8
+#define NVIC_IRQ_PRI9        9
+#define NVIC_IRQ_PRI10       10
+#define NVIC_IRQ_PRI11       11
+#define NVIC_IRQ_PRI12       12
+#define NVIC_IRQ_PRI13       13
+#define NVIC_IRQ_PRI14       14
+#define NVIC_IRQ_PRI15       15
+
+
+
+/* Generic Macros  */
+#define ENABLE          1
+#define DISABLE         0
+#define SET             ENABLE
+#define RESET           DISABLE
+#define GPIO_PIN_SET    SET
+#define GPIO_PIN_RESET  RESET
+
+
+
+
+
+#include "stm32f411xx_gpio_driver.h"
 
 #endif /* INC_STM32F411XX_H_ */
