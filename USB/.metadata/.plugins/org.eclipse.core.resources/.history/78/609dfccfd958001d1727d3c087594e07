@@ -58,8 +58,8 @@ int main()
 	// create handle
 	GPIO_Handle_t  GpioLed;
 
-	GpioLed.pGPIOx = GPIOA;
-	GpioLed.GPIOPinConfig.GPIO_PinNumber = GPIO_PIN_NO_5;
+	GpioLed.pGPIOx = GPIOC;
+	GpioLed.GPIOPinConfig.GPIO_PinNumber = GPIO_PIN_NO_8;
 	GpioLed.GPIOPinConfig.GPIO_PinMode = GPIO_MODE_OUT;
 	GpioLed.GPIOPinConfig.GPIO_PinOPType = GPIO_OP_TYPE_PP;
 	GpioLed.GPIOPinConfig.GPIO_PinPuPdControl = GPIO_NO_PUPD;
@@ -73,7 +73,7 @@ int main()
 	while(1)
 	{
 
-		GPIO_ToggleOutputPin(GPIOA, GPIO_PIN_NO_5);
+		GPIO_ToggleOutputPin(GPIOC, GPIO_PIN_NO_8);
 		delay();
 
 	}

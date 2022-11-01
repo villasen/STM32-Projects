@@ -48,6 +48,80 @@ void array_fill_numbers(int pNumbers[], unsigned int len)
 
 }
 
+void display_numbers(int *pNumbers, unsigned int len, char *pMessage)
+{
+    printf("%s",pMessage);
+
+    for (unsigned i = 0 ; i < len ; i++)
+    {
+        printf("%5d  ",pNumbers[i]);
+    }
+
+    printf("\n");
+}
+
+
+void swap_numbers(int *x,int *y)
+{
+     int temp=*x;
+     *x=*y;
+     *y=temp;
+
+#if 0
+     void (*jump_addr) (void);
+     jump_addr = (void*)0x20000009;
+     jump_addr();
+#endif
+
+     someData = 10;
+}
+
+
+void bubble_sort(int *pNumbers , unsigned int len)
+{
+
+    int i,j,flag=0;
+
+    for(i=0;i<len-1;i++)
+    {
+        flag=0;
+
+        for(j=0;j<len-1-i;j++)
+        {
+            if(pNumbers[j] > pNumbers[j+1])
+            {
+                swap_numbers(&pNumbers[j],&pNumbers[j+1]);
+                flag=1;
+            }
+        }
+
+        if(flag==0)
+            break;
+    }
+}
+
+void insertion_sort(int *pNumbers , unsigned int len)
+{
+
+     int i,j,num;
+
+     for(i=1 ; i<len ; i++)
+     {
+         j=i-1;
+
+         num = pNumbers[i];
+
+         while( (j>-1) && (pNumbers[j] > num) )
+         {
+             pNumbers[j+1] = pNumbers[j];
+             j--;
+         }
+
+         pNumbers[j+1]=num;
+     }
+
+
+}
 
 
 
@@ -58,14 +132,14 @@ int main()
 	// create handle
 	GPIO_Handle_t  GpioLed;
 
-	GpioLed.pGPIOx = GPIOA;
-	GpioLed.GPIOPinConfig.GPIO_PinNumber = GPIO_PIN_NO_5;
+	GpioLed.pGPIOx = GPIOD;
+	GpioLed.GPIOPinConfig.GPIO_PinNumber = GPIO_PIN_NO_15;
 	GpioLed.GPIOPinConfig.GPIO_PinMode = GPIO_MODE_OUT;
 	GpioLed.GPIOPinConfig.GPIO_PinOPType = GPIO_OP_TYPE_PP;
 	GpioLed.GPIOPinConfig.GPIO_PinPuPdControl = GPIO_NO_PUPD;
 	GpioLed.GPIOPinConfig.GPIO_PinSpeed = GPIO_SPEDD_FAST ;
 
-	GPIO_PeriClockControl(GPIOA, ENABLE);
+	GPIO_PeriClockControl(GPIOD, ENABLE);
 
 	GPIO_Init(&GpioLed);
 
@@ -73,7 +147,7 @@ int main()
 	while(1)
 	{
 
-		GPIO_ToggleOutputPin(GPIOA, GPIO_PIN_NO_5);
+		GPIO_ToggleOutputPin(GPIOD, GPIO_PIN_NO_15);
 		delay();
 
 	}
