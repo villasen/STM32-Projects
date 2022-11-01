@@ -28,9 +28,7 @@
   #warning "FPU is not initialized, but the project is compiling for an FPU. Please initialize the FPU before use."
 #endif
 
-int numbers[] = { 456,345,678,567,890,456,3456,123,765,456,896,456,678,987,000,145,90};
 
-int  someData = 90;
 
 void delay(void)
 {
@@ -38,22 +36,10 @@ void delay(void)
 	for (uint32_t i=0; i< 500000/2 ; i++);
 }
 
-void array_fill_numbers(int pNumbers[], unsigned int len)
-{
-
-    for ( unsigned int i = 0 ; i < len ; i++)
-    {
-        pNumbers[i] = rand() % 1000;
-    }
-
-}
-
-
 
 
 int main()
 {
-
 
 	// create handle
 	GPIO_Handle_t  GpioLed;
@@ -77,7 +63,6 @@ int main()
 		delay();
 
 	}
-
 
 
     return 0;
