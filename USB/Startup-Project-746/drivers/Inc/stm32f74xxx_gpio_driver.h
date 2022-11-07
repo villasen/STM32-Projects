@@ -8,7 +8,9 @@
 #ifndef INC_STM32F74XXX_GPIO_DRIVER_H_
 #define INC_STM32F74XXX_GPIO_DRIVER_H_
 
-* GPIO pin possible modes   */
+/* GPIO pin possible modes   */
+
+
 #define GPIO_MODE_IN       0
 #define GPIO_MODE_OUT      1
 #define GPIO_MODE_ALTFN    2
