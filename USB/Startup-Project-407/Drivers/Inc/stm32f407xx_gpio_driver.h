@@ -30,11 +30,9 @@ typedef struct
 /* Handle structure for a GPIO pin */
 typedef struct
 {
-
 	/*Pointer to hold the base address of GPIO */
 	GPIO_RegDef_t     *pGPIOx;  /* This holds the base address of the GPIO port to which this pin belongs to */
 	GPIO_PinConfig_t  GPIOPinConfig; /*This holds GPIO pin configuration settings*/
-
 
 }GPIO_Handle_t;
 

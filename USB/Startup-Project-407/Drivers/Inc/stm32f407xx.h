@@ -2,7 +2,7 @@
  * stm32f407xx.h
  *
  *  Created on: Oct 21, 2022
- *      Author: martin
+ *      Author: Martin Villasenor
  */
 
 #ifndef INC_STM32F407XX_H_
@@ -131,12 +131,6 @@ typedef struct
 
 
 
-
-
-
-
-
-
 /* peripheral register definition structure for EXTI */
 
 typedef struct
@@ -229,8 +223,15 @@ typedef struct
 /* EXTI access address */
 #define EXTI     ((EXTI_RedDef_t*)EXTI_BASEADDR)
 
-/* EXTI access address */
+/* SYSCGF access address */
 #define SYSCFG   ((SYSCFG_RedDef_t*)SYSCFG_BASEADDR)
+
+
+/* SPI access address */
+#define SPI1     ((SPI_RedDef_t*)SPI1_BASEADDR)
+#define SPI2     ((SPI_RedDef_t*)SPI2_BASEADDR)
+#define SPI3     ((SPI_RedDef_t*)SPI3_BASEADDR)
+
 
 /* Clock Enable Macros for GPIOx peripherals */
 
@@ -302,7 +303,7 @@ typedef struct
 /* Clock Disable Macros for SYSCFG peripheral */
 #define SYSCFG_PCLK_DI()  (RCC->APB2ENR) &= ~(1<<14))
 
-/* Macros to reset GPIOx peripherals */  // (RCC->AHB1ENR &= ~(1<<0))
+/* Macros to reset GPIOx peripherals */
 #define GPIOA_REG_RESET()   do{(RCC->AHB1RSTR |= (1<<0));  (RCC->AHB1RSTR &= ~(1<<0));}while(0)
 #define GPIOB_REG_RESET()   do{(RCC->AHB1RSTR |= (1<<1));  (RCC->AHB1RSTR &= ~(1<<1));}while(0)
 #define GPIOC_REG_RESET()   do{(RCC->AHB1RSTR |= (1<<2));  (RCC->AHB1RSTR &= ~(1<<2));}while(0)
